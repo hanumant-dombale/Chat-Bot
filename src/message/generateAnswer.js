@@ -1,7 +1,5 @@
 import axios from "axios";
 export const generateAnswer = async (question) => {
-    console.log("loading...");
-
     const URL =
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?";
     const API_KEY = "AIzaSyBZa0NtU3QLy6ZFhVNxyzcc-fwjWLY-sYA";
