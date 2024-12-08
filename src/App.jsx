@@ -1,4 +1,4 @@
-import { ScrollArea } from "./components/ui/scroll-area.jsx";
+import { ScrollArea, ScrollBar } from "./components/ui/scroll-area.jsx";
 import {
     PromptArea,
     UserMessage,
@@ -6,12 +6,13 @@ import {
 } from "./components/message/index.js";
 import { useSelector } from "react-redux";
 import { Button } from "./components/ui/button.jsx";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
     const [mode, setMode] = useState("light");
     const [showMode, setShowMode] = useState("dark");
     const chats = useSelector((state) => state.chats);
+    const messageEnd = useRef(null);
 
     const handleOnClick = () => {
         const html = document.querySelector("html");
@@ -20,6 +21,10 @@ function App() {
         setMode(mode === "light" ? "dark" : "light");
         setShowMode(mode === "light" ? "dark" : "light");
     };
+
+    useEffect(() => {
+        messageEnd.current?.scrollIntoView();
+    }, [chats]);
 
     return (
         <div className=" w-full h-screen flex justify-between items-center flex-col p-4 dark:bg-[#040D12] bg-[#D2E0FB] text-md dark:text-white">
@@ -42,6 +47,8 @@ function App() {
                         <BotMessage message={chat.answer} />
                     </div>
                 ))}
+                <div ref={messageEnd} />
+                <ScrollBar className="bg-slate-400 rounded-full" />
             </ScrollArea>
             <PromptArea />
         </div>
