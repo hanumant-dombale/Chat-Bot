@@ -1,4 +1,4 @@
-export const UserMessage = ({ message }) => {
+const UserMessage = ({ message }) => {
     return (
         <div className="w-[75%] m-10 lg:ml-[23%] ml-[19%] relative" id="user">
             <label htmlFor="user-message" className="absolute -top-6 -right-5 ">
@@ -13,3 +13,5 @@ export const UserMessage = ({ message }) => {
         </div>
     );
 };
+
+export default UserMessage;

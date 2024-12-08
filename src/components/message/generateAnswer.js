@@ -1,5 +1,5 @@
 import axios from "axios";
-export const generateAnswer = async (question) => {
+const generateAnswer = async (question) => {
     const URL =
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?";
     const API_KEY = "AIzaSyBZa0NtU3QLy6ZFhVNxyzcc-fwjWLY-sYA";
@@ -13,3 +13,5 @@ export const generateAnswer = async (question) => {
     });
     return answer["data"]["candidates"][0]["content"]["parts"][0]["text"];
 };
+
+export default generateAnswer;

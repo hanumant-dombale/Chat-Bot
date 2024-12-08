@@ -1,4 +1,4 @@
-export const BotMessage = ({ message }) => {
+const BotMessage = ({ message }) => {
     return (
         <div className="w-[75%] m-10 relative" id="user">
             <label htmlFor="Bot-message" className="absolute -top-6 -left-5 ">
@@ -13,3 +13,5 @@ export const BotMessage = ({ message }) => {
         </div>
     );
 };
+
+export default BotMessage;

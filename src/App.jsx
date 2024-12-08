@@ -1,20 +1,25 @@
 import { ScrollArea } from "./components/ui/scroll-area.jsx";
-import { UserMessage } from "./message/UserMessage.jsx";
-import { BotMessage } from "./message/BotMessage.jsx";
-import { PromptArea } from "./message/PromptArea.jsx";
+import {
+    PromptArea,
+    UserMessage,
+    BotMessage,
+} from "./components/message/index.js";
 import { useSelector } from "react-redux";
 import { Button } from "./components/ui/button.jsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
     const [mode, setMode] = useState("light");
+    const [showMode, setShowMode] = useState("dark");
     const chats = useSelector((state) => state.chats);
 
-    useEffect(() => {
+    const handleOnClick = () => {
         const html = document.querySelector("html");
         html.classList.remove("dark", "light");
         html.classList.add(mode);
-    }, [mode]);
+        setMode(mode === "light" ? "dark" : "light");
+        setShowMode(mode === "light" ? "dark" : "light");
+    };
 
     return (
         <div className=" w-full h-screen flex justify-between items-center flex-col p-4 dark:bg-[#040D12] bg-[#D2E0FB] text-md dark:text-white">
@@ -22,10 +27,9 @@ function App() {
                 Chatbot
                 <Button
                     className="m-2 absolute top-0 right-0 border rounded-2xl border-black dark:border-white"
-                    onClick={() => setMode(mode === "light" ? "dark" : "light")}
+                    onClick={handleOnClick}
                 >
-                    {" "}
-                    {mode}{" "}
+                    {showMode}
                 </Button>
             </h1>
             <ScrollArea className=" w-full h-full">

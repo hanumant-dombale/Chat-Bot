@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { generateAnswer } from "./generateAnswer.js";
-import { Button } from "../components/ui/button.jsx";
-import { Input } from "../components/ui/input.jsx";
+import { generateAnswer } from "./index.js";
+import { Button } from "../ui/button.jsx";
+import { Input } from "../ui/input.jsx";
 import { useDispatch } from "react-redux";
 import { addChat } from "@/store/store.js";
 
-export const PromptArea = () => {
+const PromptArea = () => {
     const [question, setQuestion] = useState("");
     const dispatch = useDispatch();
 
@@ -36,3 +36,5 @@ export const PromptArea = () => {
         </div>
     );
 };
+
+export default PromptArea;
