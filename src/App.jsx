@@ -26,7 +26,7 @@ function App() {
             <h1 className="text-3xl font-bold w-full text-center dark:bg-[#183D3D] bg-[#FEF9D9] rounded-xl p-2 h-[60px] relative">
                 Chatbot
                 <Button
-                    className="m-2 absolute top-0 right-0 border rounded-2xl border-black dark:border-white"
+                    className="m-2 absolute top-0 right-0 border rounded-2xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black border-black dark:border-white"
                     onClick={handleOnClick}
                 >
                     {showMode}
