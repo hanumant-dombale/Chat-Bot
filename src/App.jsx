@@ -28,15 +28,17 @@ function App() {
 
     return (
         <div className="font-sans w-full h-screen flex justify-between items-center flex-col p-4 dark:bg-[#040D12] bg-[#D2E0FB] text-md dark:text-white">
-            <h1 className="text-3xl font-bold w-full text-center dark:bg-[#183D3D] bg-[#FEF9D9] rounded-xl p-2 h-[60px] relative">
-                Chatbot
+            <div className="flex items-center justify-between w-full bg-[#FEF9D9] dark:bg-[#183D3D] rounded-xl">
+                <h1 className="text-3xl font-bold w-full p-3 h-[60px]">
+                    Chatbot
+                </h1>
                 <Button
-                    className="m-2 absolute top-0 right-0 border rounded-2xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black border-black dark:border-white"
+                    className="m-2 rounded-2xl  hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black border-black dark:border-white shadow-md"
                     onClick={handleOnClick}
                 >
                     {showMode}
                 </Button>
-            </h1>
+            </div>
             <ScrollArea className=" w-full h-full">
                 {chats.map((chat) => (
                     <div
