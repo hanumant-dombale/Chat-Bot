@@ -1,10 +1,10 @@
-import generateAnswer from "./generateAnswer";
+import Answer from "./generateAnswer.js";
 import BotMessage from "./BotMessage";
 import UserMessage from "./UserMessage";
 import PromptArea from "./PromptArea";
 
 export {
-    generateAnswer,
+    Answer,
     BotMessage,
     UserMessage,
     PromptArea

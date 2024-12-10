@@ -4,7 +4,10 @@ export default {
     content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
   	extend: {
-  		borderRadius: {
+		fontFamily: {
+			sans: ['Poppins', 'sans-serif'],
+		},
+		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'

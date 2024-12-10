@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 
 function App() {
     const [mode, setMode] = useState("light");
-    const [showMode, setShowMode] = useState("dark");
+    const [showMode, setShowMode] = useState("Dark Mode");
     const chats = useSelector((state) => state.chats);
     const messageEnd = useRef(null);
 
@@ -19,7 +19,7 @@ function App() {
         html.classList.remove("dark", "light");
         html.classList.add(mode);
         setMode(mode === "light" ? "dark" : "light");
-        setShowMode(mode === "light" ? "dark" : "light");
+        setShowMode(mode === "light" ? "Dark Mode" : "Light Mode");
     };
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function App() {
     }, [chats]);
 
     return (
-        <div className=" w-full h-screen flex justify-between items-center flex-col p-4 dark:bg-[#040D12] bg-[#D2E0FB] text-md dark:text-white">
+        <div className="font-sans w-full h-screen flex justify-between items-center flex-col p-4 dark:bg-[#040D12] bg-[#D2E0FB] text-md dark:text-white">
             <h1 className="text-3xl font-bold w-full text-center dark:bg-[#183D3D] bg-[#FEF9D9] rounded-xl p-2 h-[60px] relative">
                 Chatbot
                 <Button

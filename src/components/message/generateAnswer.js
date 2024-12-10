@@ -1,17 +1,27 @@
-import axios from "axios";
-const generateAnswer = async (question) => {
-    const URL =
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?";
-    const API_KEY = "AIzaSyBZa0NtU3QLy6ZFhVNxyzcc-fwjWLY-sYA";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import dotenv from "dotenv";
 
-    const answer = await axios({
-        url: `${URL}key=${API_KEY}`,
-        method: "POST",
-        data: {
-            contents: [{ parts: [{ text: question }] }],
-        },
-    });
-    return answer["data"]["candidates"][0]["content"]["parts"][0]["text"];
+const apiKey = import.meta.env.VITE_API_KEY;
+const genAI = new GoogleGenerativeAI(apiKey);
+
+const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-flash",
+});
+
+const generationConfig = {
+    temperature: 1,
+    topP: 0.95,
+    topK: 40,
+    maxOutputTokens: 8192,
+    responseMimeType: "text/plain",
 };
 
-export default generateAnswer;
+export default async function Answer(question) {
+    const chatSession = model.startChat({
+        generationConfig,
+        history: [],
+    });
+
+    const result = await chatSession.sendMessage(question);
+    return result.response.text();
+}

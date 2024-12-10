@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { generateAnswer } from "./index.js";
 import { Button } from "../ui/button.jsx";
 import { Input } from "../ui/input.jsx";
 import { useDispatch } from "react-redux";
-import { addChat } from "@/store/store.js";
+import { addUserMessage, addBotMessage } from "@/store/store.js";
+import { Answer } from "./index.js";
 
 const PromptArea = () => {
     const [question, setQuestion] = useState("");
@@ -11,9 +11,11 @@ const PromptArea = () => {
 
     const sumbitHandler = async (e) => {
         e.preventDefault();
-        const answer = await generateAnswer(question);
-        dispatch(addChat({ question, answer }));
+        let answer = "Loading....";
+        dispatch(addUserMessage({ question, answer }));
         setQuestion("");
+        answer = await Answer(question);
+        dispatch(addBotMessage(answer));
     };
 
     return (

@@ -14,13 +14,20 @@ export const chatSlice = createSlice({
     name: "chat",
     initialState,
     reducers: {
-        addChat: (state, action) => {
+        addUserMessage: (state, action) => {
+            let chatId = nanoid();
             const chat = {
-                id: nanoid(),
+                id: chatId,
                 question: action.payload.question,
                 answer: action.payload.answer,
             };
             state.chats.push(chat);
+        },
+        addBotMessage: (state, action) => {
+            let chatId = state.chats[state.chats.length - 1].id;
+
+            state.chats.find((chat) => chat.id === chatId).answer =
+                action.payload;
         },
     },
 });
@@ -29,4 +36,4 @@ export const store = configureStore({
     reducer: chatSlice.reducer,
 });
 
-export const { addChat } = chatSlice.actions;
+export const { addUserMessage, addBotMessage } = chatSlice.actions;
