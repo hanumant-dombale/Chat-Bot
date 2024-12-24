@@ -9,7 +9,7 @@ import { Button } from "./components/ui/button.jsx";
 import { useEffect, useRef, useState } from "react";
 
 function App() {
-    const [mode, setMode] = useState("light");
+    const [mode, setMode] = useState("dark");
     const [showMode, setShowMode] = useState("Dark Mode");
     const chats = useSelector((state) => state.chats);
     const messageEnd = useRef(null);
@@ -42,6 +42,7 @@ function App() {
             <ScrollArea className=" w-full h-full">
                 {chats.map((chat) => (
                     <div
+                        ref={messageEnd}
                         key={chat.id}
                         className="w-full bg-transparent flex flex-col"
                     >
@@ -49,7 +50,6 @@ function App() {
                         <BotMessage message={chat.answer} />
                     </div>
                 ))}
-                <div ref={messageEnd} />
                 <ScrollBar className="bg-slate-400 rounded-full" />
             </ScrollArea>
             <PromptArea />
